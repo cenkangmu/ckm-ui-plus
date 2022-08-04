@@ -1,5 +1,5 @@
 <template>
-  <div class="block c-iconfont">
+  <div class="home-list c-iconfont">
     <div class="item" v-for="(i,j) in menus" :key="j" @click="toPage(i.url)">
       <div>
         <span class="item-title">{{ i.english }}</span>
@@ -25,12 +25,7 @@ function toPage(url){
 </script>
 
 <style lang="scss" scoped>
-.block {
-  margin: 10px 0;
-  background: $color8;
-  font-size: 14px;
-  color: $color3;
-}
+
 
 .item {
   padding: 0 15px;

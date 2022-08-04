@@ -44,7 +44,7 @@ export default {
 .c-button-default-background {
   background: $color8;
   color: $color2;
-  border: 1px solid $color10;
+  border: 1px solid $color9;
 }
 
 .c-button-primary-background {
@@ -73,7 +73,7 @@ export default {
 .c-button-default-border {
   background: $color8;
   color: $color2;
-  border: 1px solid $color10;
+  border: 1px solid $color9;
 }
 
 .c-button-primary-border {

@@ -1,6 +1,6 @@
 <template>
   <div class="home c-iconfont">
-    <div class="title">基本元素</div>
+    <div class="title">{{ menus[current].name }}</div>
     <div class="main">
       <router-view/>
     </div>
@@ -59,7 +59,7 @@ function tapTabBar(i, j) {
   bottom: 0;
   display: flex;
   flex-direction: column;
-  background: $color7;
+  background: #f1f9ff;
 
   div {
     flex: none;

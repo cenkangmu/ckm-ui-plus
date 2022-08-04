@@ -1,5 +1,5 @@
 <template>
-  <div class="block c-iconfont">
+  <div class="home-list c-iconfont">
     <div class="item" v-for="(i,j) in menus" :key="j" @click="toPage(i.url)">
       <div>
         <span class="item-title">{{ i.english }}</span>

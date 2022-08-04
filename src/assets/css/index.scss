@@ -23,9 +23,20 @@ $font4:16px;
 $font5:18px;
 
 .c-disable{
-  opacity: .3;
+  opacity: .4;
 }
-
+.c-mark{
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(#000,.3);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 

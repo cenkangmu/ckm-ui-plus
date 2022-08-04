@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "975635",
+      "name": "单选选中",
+      "font_class": "danxuanxuanzhong",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "1241049",
+      "name": "单选",
+      "font_class": "danxuan",
+      "unicode": "e6a6",
+      "unicode_decimal": 59046
+    },
+    {
       "icon_id": "29925",
       "name": "close",
       "font_class": "close",
