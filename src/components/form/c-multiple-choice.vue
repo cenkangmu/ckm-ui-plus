@@ -1,17 +1,21 @@
 <template>
-  <div class="c-single-choice c-iconfont" @click="show = true" :class="disable?'c-disable':''">
+  <div class="c-multiple-choice c-iconfont" @click="show = true" :class="disable?'c-disable':''">
     <!--  标签  -->
-    <div class="c-single-choice-label" :style="{
+    <div class="c-multiple-choice-label" :style="{
     width:labelWidth,
     textAlign:labelAlign,
   }">{{ label }}
     </div>
     <!--  选择结果  -->
-    <div class="c-single-choice-text" :style="{textAlign:inputAlign }">
-      <span v-if="modelValue">{{ getValue }}</span>
+    <div class="c-multiple-choice-text" :style="{textAlign:inputAlign }">
+      <span v-if="modelValue.length">
+        {{ getValue }}
+
+      </span>
       <span class="no-text" v-else>请选择</span>
+      <span class="c-multiple-choice-count" v-if="modelValue.length">{{modelValue.length}}</span>
     </div>
-    <div class="c-single-choice-icon">&#xe646;</div>
+    <div class="c-multiple-choice-icon">&#xe646;</div>
   </div>
   <!--  弹窗选中  -->
   <div class="c-mark c-iconfont" v-if="show">
@@ -20,16 +24,17 @@
       <!--   标题   -->
       <div class="c-main-label">{{ label }}</div>
       <!--   选择列表   -->
-      <div class="c-single-choice-list">
-        <div class="c-single-choice-item" v-for="i in data" @click="change(i)"
-             :key="i[valueKey]" :class="current === i[valueKey]?'c-single-choice-active':''">
-          <div v-if="current === i[valueKey]">&#xe642;</div>
-          <div v-else>&#xe6a6;</div>
+      <div class="c-multiple-choice-list">
+        <div class="c-multiple-choice-item" v-for="i in data" @click="change(i)"
+             :key="i[valueKey]" :class="current.indexOf(i[valueKey]) !==-1 ?'c-multiple-choice-active':''">
+          <div v-if="current.indexOf(i[valueKey]) !==-1">&#xe630;</div>
+          <div v-else>&#xe696;</div>
           <div>{{ i[labelKey] }}</div>
+          {{ i[valueKey] }}
         </div>
       </div>
       <!--  底部按钮    -->
-      <div class="c-single-choice-btn">
+      <div class="c-multiple-choice-btn">
         <div @click="cancel">取消</div>
         <div @click="submit">确定</div>
       </div>
@@ -38,7 +43,7 @@
 </template>
 
 <script setup>
-import {ref, computed, watch} from 'vue'
+import {ref, reactive, computed, watch} from 'vue'
 
 const props = defineProps({
   data: Array,//选择数据
@@ -50,34 +55,42 @@ const props = defineProps({
   labelAlign: String,//标签对齐方式
   inputAlign: {type: String, default: 'right'},//输入框内容对齐方式
   placeholder: null,//输入框占位符
-  disable:Boolean,//禁用
+  disable: Boolean,//禁用
   change: Function,//当数据改变是调用的函数
-  close:Function,//监听弹窗关闭
-  cancel:Function,//监听点击取消按钮
+  close: Function,//监听弹窗关闭
+  cancel: Function,//监听点击取消按钮
+  separator:{type:String,default:'、'},//分隔符
+  showOne:Boolean,//只显示被选中的第一个
 })
 
 
 const getValue = computed(() => {//计算选择框显示结果
-  let value = ''
+  let value = []
   props.data.forEach(i => {
-    if (i[props.valueKey] === props.modelValue)
-      value = i[props.labelKey]
+    if (props.modelValue.includes(i[props.valueKey]))
+      value.push(i[props.labelKey])
   })
-  return value
+  if(!value.length) return ''
+  return props.showOne?value[0]:value.join(props.separator)
 })
 
 
-let current = ref(),//当前选中值
+let current = ref([]),//当前选中值
     show = ref(false)//选择框是否显示
 watch(show, (e) => {//监听选择框显示，修改当前选中值
+  current.value = []
   if (e)
-    current.value = props.modelValue
+    current.value.push(...props.modelValue)
 })
 
 const emit = defineEmits()
 
 function change(e) {//点击选择项时，修改当前选中的值
-  current.value = e[props.valueKey]
+  let index = current.value.indexOf(e[props.valueKey])
+  if (index === -1)
+    current.value.push(e[props.valueKey])
+  else
+    current.value.splice(index, 1)
 }
 
 function submit() {//点击提交按钮时，修改父元素绑定的值
@@ -90,7 +103,8 @@ function closeChoice() {//关闭弹窗
   show.value = false
   props.close && props.close()
 }
-function cancel(){
+
+function cancel() {//点击取消
   props.cancel && props.cancel()
   closeChoice()
 }
@@ -98,12 +112,12 @@ function cancel(){
 
 <script>
 export default {
-  name: "c-single-choice"
+  name: "c-multiple-choice"
 }
 </script>
 
 <style lang="scss" scoped>
-.c-single-choice {
+.c-multiple-choice {
   display: flex;
   height: 44px;
   align-items: center;
@@ -111,21 +125,41 @@ export default {
   font-size: 15px;
   padding: 0 10px;
 
-  .c-single-choice-label {
+  .c-multiple-choice-label {
     flex: none;
     color: $color2;
     padding-right: 15px;
   }
 
-  .c-single-choice-text {
+  .c-multiple-choice-text {
     flex: 1;
-
+    display: flex;
+    overflow: hidden;
+    span{
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
     .no-text {
       color: $color5;
     }
+    .c-multiple-choice-count{
+      flex: none;
+      min-width: 20px;
+      height: 20px;
+      background: $color11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-left: 10px;
+      font-size: 10px;
+      color: $color4;
+    }
   }
 
-  .c-single-choice-icon {
+  .c-multiple-choice-icon {
     margin-left: 10px;
     color: $color5;
     font-size: 16px;
@@ -150,11 +184,12 @@ export default {
     box-sizing: border-box;
   }
 
-  .c-single-choice-list {
+  .c-multiple-choice-list {
     flex: 1;
     padding: 0 20px;
     overflow: auto;
-    .c-single-choice-item {
+
+    .c-multiple-choice-item {
       margin: 20px 0;
       color: $color4;
       display: flex;
@@ -175,12 +210,12 @@ export default {
 
     }
 
-    .c-single-choice-active {
+    .c-multiple-choice-active {
       color: $main-color;
     }
   }
 
-  .c-single-choice-btn {
+  .c-multiple-choice-btn {
     flex: none;
     display: flex;
     height: 50px;
@@ -204,7 +239,8 @@ export default {
     }
   }
 }
-.c-disable{
+
+.c-disable {
   pointer-events: none;
 }
 </style>

@@ -4,8 +4,9 @@
       基础用法
     </c-dividing-line>
     <div class="block">
-      <c-single-choice label="语言选择" :data="data" v-model="value"></c-single-choice>
-      <c-single-choice label="禁用模式" disable :data="data" v-model="value"></c-single-choice>
+      <c-multiple-choice label="语言选择" :data="data" v-model="value"></c-multiple-choice>
+      <c-multiple-choice label="禁用模式" disable :data="data" v-model="value"></c-multiple-choice>
+      <c-multiple-choice label="只显示一个" show-one :data="data" v-model="value"></c-multiple-choice>
     </div>
 
   </div>
@@ -20,17 +21,12 @@ let data = reactive([
   {label:'PHP',value:'4'},
   {label:'Python',value:'5'},
 ])
-let value = ref('1')
-function change(e){
-  console.log(e)
-}
-function close(e){
-  console.log('close')
-}
+let value = ref(['1','2'])
 </script>
 <script>
 export default {
-  name: 'SingleChoice/单选项',
+  name: 'MultipleChoice/多选项',
+
 }
 </script>
 <style scoped>

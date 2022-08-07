@@ -14,9 +14,9 @@ const props = defineProps({
   max: {type: Number, default: 100},//最大值
   size: {type: String, default: '50px'},//宽度、高度
   fontSize: {type: String, default: '12px'},//字体大小
-  color: {type: String, default: '#666'},//字体颜色
+  color: {type: String, default: '#333'},//字体颜色
   lineColor: {type: String, default: '#eee'},//线条颜色
-  activeColor: {type: String, default: '#c8c8c8'},//进度达到的线条颜色
+  activeColor: {type: String, default: '#999'},//进度达到的线条颜色
   lineWidth: {type: Number, default: 3},//线条宽度
 })
 
@@ -78,6 +78,7 @@ function drawArc(lineColor, value) {//画线条,lineColor：线条颜色,value�
   ctx.beginPath();
   ctx.strokeStyle = lineColor
   ctx.lineWidth = props.lineWidth
+  ctx.lineCap = 'round'
   ctx.arc(size / 2, size / 2, size / 2 - props.lineWidth / 2,
       -Math.PI / 2, Math.PI / 2 * end, false);
   ctx.stroke();
