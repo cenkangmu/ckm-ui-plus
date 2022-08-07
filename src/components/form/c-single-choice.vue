@@ -10,6 +10,10 @@
     <div class="c-single-choice-text" :style="{textAlign:inputAlign }">
       <span v-if="modelValue">{{ getValue }}</span>
       <span class="no-text" v-else>请选择</span>
+      <div class="c-input-clear"
+           v-if="showClear && modelValue"
+           @click.stop="emit('update:modelValue', '')">&#xe647;
+      </div>
     </div>
     <div class="c-single-choice-icon">&#xe646;</div>
   </div>
@@ -51,6 +55,7 @@ const props = defineProps({
   inputAlign: {type: String, default: 'right'},//输入框内容对齐方式
   placeholder: null,//输入框占位符
   disable:Boolean,//禁用
+  showClear:Boolean,//清除按钮
   change: Function,//当数据改变是调用的函数
   close:Function,//监听弹窗关闭
   cancel:Function,//监听点击取消按钮
@@ -119,9 +124,30 @@ export default {
 
   .c-single-choice-text {
     flex: 1;
+    display: flex;
+    align-items: center;
+    span{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
 
     .no-text {
       color: $color5;
+    }
+    .c-input-clear {
+      flex: none;
+      width: 15px;
+      height: 15px;
+      background: $color9;
+      color: $color8;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-left: 10px;
     }
   }
 
@@ -156,7 +182,7 @@ export default {
     overflow: auto;
     .c-single-choice-item {
       margin: 20px 0;
-      color: $color4;
+      color: $color2;
       display: flex;
       align-items: center;
 

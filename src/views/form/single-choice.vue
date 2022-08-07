@@ -6,6 +6,7 @@
     <div class="block">
       <c-single-choice label="语言选择" :data="data" v-model="value"></c-single-choice>
       <c-single-choice label="禁用模式" disable :data="data" v-model="value"></c-single-choice>
+      <c-single-choice label="可清除" show-clear :data="data" v-model="value"></c-single-choice>
     </div>
 
   </div>

@@ -22,7 +22,15 @@
     <!--  主体  -->
     <div class="c-main">
       <!--   标题   -->
-      <div class="c-main-label">{{ label }}</div>
+      <div class="c-main-label">
+        <div style="display: flex;align-items: center" :style="{color:all?'#0090ff':'#666'}" @click="tapAll">
+          <div v-if="all">&#xe630;</div>
+          <div v-else>&#xe696;</div>
+          <div style="margin-left: 5px">全选</div>
+        </div>
+        <div style="flex: 1;text-align: center">{{ label }}</div>
+        <div style="padding-left: 15px;color: #0090ff" @click="current = [];all = false">清除</div>
+      </div>
       <!--   选择列表   -->
       <div class="c-multiple-choice-list">
         <div class="c-multiple-choice-item" v-for="i in data" @click="change(i)"
@@ -30,7 +38,6 @@
           <div v-if="current.indexOf(i[valueKey]) !==-1">&#xe630;</div>
           <div v-else>&#xe696;</div>
           <div>{{ i[labelKey] }}</div>
-          {{ i[valueKey] }}
         </div>
       </div>
       <!--  底部按钮    -->
@@ -76,12 +83,25 @@ const getValue = computed(() => {//计算选择框显示结果
 
 
 let current = ref([]),//当前选中值
-    show = ref(false)//选择框是否显示
+    show = ref(false),//选择框是否显示
+    all = ref(false)//是否全选
 watch(show, (e) => {//监听选择框显示，修改当前选中值
   current.value = []
   if (e)
     current.value.push(...props.modelValue)
+  checkAll()
 })
+function tapAll(){
+  all.value = !all.value
+  current.value = []
+  if(all.value){
+    current.value = props.data.map(i=>i[props.valueKey])
+  }
+}
+
+function checkAll(){
+  all.value = props.data.length && current.value.length === props.data.length
+}
 
 const emit = defineEmits()
 
@@ -91,6 +111,7 @@ function change(e) {//点击选择项时，修改当前选中的值
     current.value.push(e[props.valueKey])
   else
     current.value.splice(index, 1)
+  checkAll()
 }
 
 function submit() {//点击提交按钮时，修改父元素绑定的值
@@ -176,12 +197,17 @@ export default {
   flex-direction: column;
 
   .c-main-label {
-    text-align: center;
-    line-height: 50px;
+    height: 50px;
     border-bottom: 1px solid $color10;
     flex: none;
     color: $color1;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    div{
+      flex: none;
+    }
   }
 
   .c-multiple-choice-list {
@@ -191,7 +217,7 @@ export default {
 
     .c-multiple-choice-item {
       margin: 20px 0;
-      color: $color4;
+      color: $color2;
       display: flex;
       align-items: center;
 

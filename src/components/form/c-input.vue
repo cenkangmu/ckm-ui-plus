@@ -20,7 +20,7 @@
     <!--  清除按钮  -->
     <div class="c-input-clear"
          v-if="showClear && String(modelValue).length"
-         @click="emitValue('')">&#xe647;
+         @click.stop="emitValue('')">&#xe647;
     </div>
   </div>
 </template>
