@@ -38,8 +38,7 @@
       <c-input label="最大值" v-model="num" type="number" :max="1000" placeholder="最大值限制为1000"/>
       <c-input label="最大值" v-model="num" type="number" :min="50" placeholder="最小值为50"/>
     </div>
-
-
+    
     <c-dividing-line line-color="#74bcff" text-color="#0089ff">
       可清空
     </c-dividing-line>
@@ -47,8 +46,6 @@
       <c-input label="姓名" v-model="name" show-clear placeholder="输入姓名"/>
       <c-input label="手机号码" v-model="phone" show-clear :max-length="11" placeholder="输入性别"/>
     </div>
-
-
 
   </div>
 </template>
