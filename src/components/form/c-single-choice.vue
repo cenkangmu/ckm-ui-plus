@@ -87,16 +87,16 @@ function change(e) {//点击选择项时，修改当前选中的值
 
 function submit() {//点击提交按钮时，修改父元素绑定的值
   emit('update:modelValue', current.value)
-  props.change && props.change(current.value)
+  typeof props.change === 'function' && props.change(current.value)
   closeChoice()
 }
 
 function closeChoice() {//关闭弹窗
   show.value = false
-  props.close && props.close()
+  typeof props.close === 'function' && props.close()
 }
 function cancel(){
-  props.cancel && props.cancel()
+  typeof props.cancel === 'function' && props.cancel()
   closeChoice()
 }
 </script>
@@ -126,6 +126,7 @@ export default {
     flex: 1;
     display: flex;
     align-items: center;
+    overflow: hidden;
     span{
       overflow: hidden;
       text-overflow: ellipsis;

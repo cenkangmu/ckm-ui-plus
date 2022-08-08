@@ -13,10 +13,10 @@
 
 <script setup>
 import {initMenus} from '@/hooks/menu'
-
+import {useRouter} from 'vue-router'
 const menus = initMenus('form')
 
-import {useRouter} from 'vue-router'
+
 const router = useRouter()
 function toPage(url){
   router.push(url)

@@ -22,12 +22,7 @@ let data = reactive([
   {label:'Python',value:'5'},
 ])
 let value = ref('1')
-function change(e){
-  console.log(e)
-}
-function close(e){
-  console.log('close')
-}
+
 </script>
 <script>
 export default {
