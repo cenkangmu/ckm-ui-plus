@@ -1,11 +1,12 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 
 //获取views文件夹下所有vue文件
-const files = require.context('@/views', true, /\.vue$/)
+const files = import.meta.globEager("/src/views/**/*.vue")
 let components = {}
-files.keys().forEach(key => {
-  components[key.replace(/(\.\/|\.vue)/g, '')] = files(key).default;
+Object.keys(files).forEach(key => {
+  components[key.replace(/(\.\/|\.vue)/g, '').replace('/src/views/','')] = files[key].default;
 })
+
 
 //提取首页子路由文件
 let homeChildren = []
@@ -32,7 +33,7 @@ for (let i in components) {
 const routes = [
   {
     path: '/',
-    component: () => import('@/views/home'),
+    component: () => import('../views/home.vue'),
     children: [
       {path: '', redirect: '/base'},
       ...homeChildren
@@ -40,7 +41,7 @@ const routes = [
   },
   {
     path: '/404',
-    component: () => import('@/views/404')
+    component: () => import('../views/404.vue')
   },
   {
     path: '/:all(.*)',//匹配找不到的路由
@@ -48,10 +49,10 @@ const routes = [
   },
   ...routeList
 ]
-
+console.log(routes)
 const router = createRouter({
   // history: createWebHistory(process.env.BASE_URL),
-  history: createWebHashHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes
 })
 

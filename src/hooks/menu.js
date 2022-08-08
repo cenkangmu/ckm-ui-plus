@@ -1,13 +1,17 @@
 import {reactive} from 'vue'
 
-const files = require.context('@/views', true, /\.vue$/)
+const files = import.meta.globEager("/src/views/**/*.vue")
 
 export function initMenus(url) {
   const menus = reactive([])
 
-  files.keys().forEach(i => {
-    let {name, __file} = files(i).default
-    if (name && name !== 'index' && __file.indexOf('src/views/'+url)===0) {
+  Object.keys(files).forEach(i => {
+    let {name, __file} = files[i].default
+
+    let index = __file.indexOf('src/views/')
+    __file = __file.substr(index)
+
+    if (name && name !== 'index' && __file.indexOf('src/views/'+url)!= -1) {
       let info = name.split('/')
 
       menus.push({

@@ -1,10 +1,10 @@
 import('@/assets/iconfont/iconfont.css')
 
 //获取components文件夹下所有vue文件
-const files = require.context('@/components', true, /\.vue$/)
+const files = import.meta.globEager("/src/components/**/*.vue")
 let components = {}
-files.keys().forEach(key => {
-  components[key.replace(/(\.\/|\.vue)/g, '')] = files(key).default;
+Object.keys(files).forEach(key => {
+  components[key.replace(/(\.\/|\.vue)/g, '').replace('/src/components/','')] = files[key].default;
 })
 
 let install = (Vue) => {
