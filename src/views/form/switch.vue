@@ -16,12 +16,18 @@
       </div>
       <div class="fsb">
         <div>背景颜色</div>
-        <c-switch open-background="#333" v-model="value"/>
+        <c-switch open-background="#0090ff" v-model="value"/>
       </div>
       <div class="fsb">
         <div>按钮颜色</div>
         <c-switch :open-color="'#333'" v-model="value"/>
       </div>
+    </div>
+    <c-dividing-line line-color="#74bcff" text-color="#0089ff">
+      禁用开关
+    </c-dividing-line>
+    <div class="block">
+      <c-switch v-model="value" disable/>
     </div>
 
   </div>
