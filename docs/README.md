@@ -19,3 +19,5 @@ features:
 - title: 功能丰富
   details: 仅需npm下载引入，即可使用，组件丰富，涵盖很多开发常用的组件以及常用的API
 ---
+
+<showDemo/>
