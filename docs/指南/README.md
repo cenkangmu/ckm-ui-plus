@@ -1,4 +1,3 @@
-[[toc]]
 ## 介绍
 ckm-ui-plus 是由 ckm 个人研发的一款基于 Vue3 的 UI框架，包含了很多常用的移动端组件。
 ## 快速上手
@@ -14,8 +13,12 @@ npm i ckm-ui-plus
 在main.js中引入即可使用
 
 ```javascript
-import ckmUI from 'ckm-ui-plus'
-import 'ckm-ui-plus/style.css'
+import { createApp } from 'vue'
+import App from './App.vue'
 
-createApp(App).use(router).use(ckmUI).mount('#app')
+//引入ckm-ui-plus
+import ckmUI from 'ckm-ui-plus'
+import 'ckm-ui-plus/lib/style.css'
+
+createApp(App).use(ckmUI).mount('#app')
 ```
