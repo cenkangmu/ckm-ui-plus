@@ -50,10 +50,10 @@ import {ref, reactive, computed, watch} from 'vue'
 
 const props = defineProps({
   data: Array,//选择数据
-  modelValue: null,//选择结果
+  modelValue: Array,//选择结果
   labelKey: {default: 'label'},//显示key
   valueKey: {default: 'value'},//返回key
-  childrenKey: {default: 'children'},//返回key
+  childrenKey: {default: 'children'},//子集key
   label: null,//输入框标签
   labelWidth: {type: String, default: '5em'},//标签宽度
   labelAlign: String,//标签对齐方式

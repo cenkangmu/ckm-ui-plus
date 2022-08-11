@@ -33,7 +33,7 @@ import PageNav from '@theme/PageNav.vue'
     justify-content: space-between;
     .content{
       flex: 1;
-      max-width: 800px;
+      max-width: 900px;
     }
 
   }

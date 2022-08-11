@@ -1,5 +1,5 @@
 <template>
-  <div class="c-input c-iconfont">
+  <div class="c-input c-iconfont" :class="disable?'c-disable':''">
     <!--  标签  -->
     <div class="c-input-label" :style="{
     width:labelWidth,
@@ -30,13 +30,14 @@ const props = defineProps({
   type: {type: String},//输入框类型
   label: null,//输入框标签
   labelWidth: {type: String, default: '4em'},//标签宽度
-  labelAlign: null,//标签对齐方式
+  labelAlign: String,//标签对齐方式
   inputAlign: String,//输入框内容对齐方式
   placeholder: null,//输入框占位符
   maxLength: Number,//最大文本长度
   max: Number,//数字输入时，最大值
   min: Number,//数字输入时，最小值
   showClear: Boolean,//显示清除按钮
+  disable: Boolean,//是否禁用
 })
 
 const emit = defineEmits()
@@ -117,5 +118,8 @@ export default {
     border-radius: 50%;
     margin-left: 10px;
   }
+}
+.c-disable{
+  pointer-events: none;
 }
 </style>

@@ -47,6 +47,13 @@
       <c-input label="手机号码" v-model="phone" show-clear :max-length="11" placeholder="输入性别"/>
     </div>
 
+    <c-dividing-line line-color="#74bcff" text-color="#0089ff">
+      禁用输入框
+    </c-dividing-line>
+    <div class="block">
+      <c-input disable label="姓名" v-model="name" placeholder="输入姓名"/>
+    </div>
+
   </div>
 </template>
 <script setup>

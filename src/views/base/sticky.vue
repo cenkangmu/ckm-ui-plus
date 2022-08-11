@@ -76,6 +76,8 @@ export default {
     padding: 15px;
     border: 1px solid $color10;
     background: #fff;
+    box-sizing: border-box;
+    height: 50px;
   }
 }
 

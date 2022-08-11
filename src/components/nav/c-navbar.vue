@@ -33,17 +33,17 @@
 </template>
 <script setup>
 const props = defineProps({
-  title:String,
-  width:{type:String},
-  height:{type:String,default:'50px'},
-  background:{type:String,default:'#fff'},
-  backText:{type: String,},
-  rightText:{type:String,},
-  borderColor:{type:String},
-  color:{type:String},
+  title:String,//标题
+  width:{type:String},//宽度
+  height:{type:String,default:'50px'},//高度
+  background:{type:String,default:'#fff'},//背景颜色
+  backText:{type: String,},//返回文本
+  rightText:{type:String,},//右侧文本
+  borderColor:{type:String},//底部边框颜色
+  color:{type:String},//文本颜色
   showSearch:Boolean,//显示搜索框
-  placeholder:{type:String,default:'请输入关键字搜索'},
-  modelValue:String,
+  placeholder:{type:String,default:'请输入关键字搜索'},//搜索框占位符
+  modelValue:String,//搜索框的值
 
 })
 
@@ -78,6 +78,7 @@ export default {
     min-width: 4em;
     .c-navbar-back{
       margin-right: 15px;
+      cursor: pointer;
     }
     span{
       &:nth-child(1){

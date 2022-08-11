@@ -1,5 +1,4 @@
 import {reactive} from 'vue'
-
 const files = import.meta.globEager("/src/views/**/*.vue")
 
 export function initMenus(url) {

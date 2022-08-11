@@ -47,15 +47,15 @@ import {ref, computed, watch} from 'vue'
 const props = defineProps({
   data: Array,//选择数据
   modelValue: null,//选择结果
-  labelKey: {default: 'label'},//显示key
-  valueKey: {default: 'value'},//返回key
+  labelKey: {type:String,default: 'label'},//显示key
+  valueKey: {type:String,default: 'value'},//返回key
   label: null,//输入框标签
   labelWidth: {type: String, default: '5em'},//标签宽度
   labelAlign: String,//标签对齐方式
   inputAlign: {type: String, default: 'right'},//输入框内容对齐方式
   placeholder: null,//输入框占位符
-  disable:Boolean,//禁用
-  showClear:Boolean,//清除按钮
+  disable:Boolean,//是否禁用
+  showClear:Boolean,//显示清除按钮
   change: Function,//当数据改变是调用的函数
   close:Function,//监听弹窗关闭
   cancel:Function,//监听点击取消按钮

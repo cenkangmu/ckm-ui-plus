@@ -18,6 +18,9 @@
   overflow: auto;
   padding: 15px 20px;
   background: #f1f9ff;
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 .block{
   margin-top: 5px;
@@ -32,5 +35,21 @@
   background: $color8;
   font-size: 14px;
   color: $color3;
+}
+*::-webkit-scrollbar {/*滚动条整体样式*/
+  width: 10px;     /*高宽分别对应横竖滚动条的尺寸*/
+  height: 1px;
+}
+
+*::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.15);
+  background: #eee;
+}
+
+*::-webkit-scrollbar-track {/*滚动条里面轨道*/
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.15);
+  background: #fff;
+  border-radius: 10px;
 }
 </style>

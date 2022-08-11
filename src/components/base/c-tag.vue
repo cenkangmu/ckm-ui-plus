@@ -28,7 +28,7 @@ const props = defineProps({
   type: {type: String, default: 'default'},//按钮类型：default、primary、success、warn、error
   radius: {type: String, default: '0'},//圆角
   showType: {type: String, default: 'background'},//显示类型：边框型(border)、背景型(background)
-  showClose: {type: Boolean},//是否禁用
+  showClose: {type: Boolean},//是否显示关闭图标
   disable: {type: Boolean},//是否禁用
 })
 const emit = defineEmits()

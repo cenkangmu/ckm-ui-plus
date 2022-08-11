@@ -8,6 +8,9 @@ actions:
 - text:  快速上手 →
   link: /指南/
   type: primary
+- text:  Github
+  link: https://github.com/cenkangmu/ckm-ui-plus
+  type: secondary
 features:
 - title: 简洁至上
   details: 以减少代码，拓展功能为目的，以最少的代码，实现最多的功能。
