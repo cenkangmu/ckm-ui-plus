@@ -34,6 +34,7 @@ module.exports = {
               {text: '多选项 MultipleChoice', link: '/组件/表单组件/多选项.md'},
               {text: '联级选择器 Chain', link: '/组件/表单组件/联级选择器.md'},
               {text: '开关 Switch', link: '/组件/表单组件/开关.md'},
+              {text: '评分 Score', link: '/组件/表单组件/评分.md'},
             ]
           },
           {
