@@ -7,8 +7,8 @@ module.exports = {
   lang: 'zh-CN',
   title: 'ckm-ui-plus',
   description: '这是我的第一个 VuePress 站点',
-
   theme: defaultTheme({
+    logo:'/icon.gif',
     sidebar: [
       {
         text: '指南',
@@ -40,6 +40,8 @@ module.exports = {
           {
             text: '导航组件', children: [
               {text: '导航栏 Navbar', link: '/组件/导航组件/导航栏.md'},
+              {text: '切换栏 ToggleBar', link: '/组件/导航组件/切换栏.md'},
+              {text: '标签栏 TagBar', link: '/组件/导航组件/标签栏.md'},
             ]
           },
         ]
