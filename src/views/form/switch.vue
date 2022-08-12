@@ -12,7 +12,7 @@
     <div class="block">
       <div class="fsb">
         <div>调整大小</div>
-        <c-switch width="100px" height="50px" v-model="value"/>
+        <c-switch width="60px" height="30px" v-model="value"/>
       </div>
       <div class="fsb">
         <div>背景颜色</div>

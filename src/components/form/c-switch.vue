@@ -15,8 +15,8 @@
 </template>
 <script setup>
 const props = defineProps({
-  width:{type:String,default:'60px'},//宽度
-  height:{type:String,default: '30px'},//高度
+  width:{type:String,default:'40px'},//宽度
+  height:{type:String,default: '20px'},//高度
   background:{type:String,default:'#eee'},//关闭时背景色
   openBackground:{type:String,default:'#00ef72'},//打开时背景色
   color:{type:String,default:'#fff'},//关闭时前景色
