@@ -1,6 +1,5 @@
 ---
 home: true
-heroImage: /icon.gif
 heroText: ckm-ui-plus
 tagline: 作者：ckm
 

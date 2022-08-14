@@ -8,7 +8,6 @@ module.exports = {
   title: 'ckm-ui-plus',
   description: '这是我的第一个 VuePress 站点',
   theme: defaultTheme({
-    logo:'/icon.gif',
     sidebar: [
       {
         text: '指南',
