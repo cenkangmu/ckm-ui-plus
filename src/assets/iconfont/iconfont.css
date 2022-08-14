@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3024577 */
-  src: url('iconfont.woff2?t=1660014296443') format('woff2'),
-       url('iconfont.woff?t=1660014296443') format('woff'),
-       url('iconfont.ttf?t=1660014296443') format('truetype');
+  src: url('iconfont.woff2?t=1660439461759') format('woff2'),
+       url('iconfont.woff?t=1660439461759') format('woff'),
+       url('iconfont.ttf?t=1660439461759') format('truetype');
 }
 
 .c-iconfont {
@@ -49,7 +49,7 @@
   content: "\e646";
 }
 
-.icon-31fanhui1:before {
+.icon-fanhui1:before {
   content: "\e601";
 }
 

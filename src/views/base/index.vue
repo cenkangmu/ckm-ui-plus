@@ -1,7 +1,7 @@
 <template>
   <div class="home-list c-iconfont">
     <div class="item" v-for="(i,j) in menus" :key="j" @click="toPage(i.url)">
-      <div>
+      <div style="display: flex;justify-content: space-between;flex: 1;padding-right: 10px">
         <span class="item-title">{{ i.english }}</span>
         <span>{{ i.name }}</span>
       </div>

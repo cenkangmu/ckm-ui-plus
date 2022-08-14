@@ -13,6 +13,10 @@ module.exports = {
       {
         text: '指南',
         link: '/指南',
+        children: [
+          {text:'介绍',link:'/指南/#介绍'},
+          {text:'快速上手',link:'/指南/#快速上手'},
+        ]
       },
       {
         text: '组件',
@@ -32,10 +36,14 @@ module.exports = {
               {text: '输入框 Input', link: '/组件/表单组件/输入框.md'},
               {text: '单选项 SingleChoice', link: '/组件/表单组件/单选项.md'},
               {text: '多选项 MultipleChoice', link: '/组件/表单组件/多选项.md'},
+              {text: '选择列表 SelectList', link: '/组件/表单组件/选择列表.md'},
               {text: '联级选择器 Chain', link: '/组件/表单组件/联级选择器.md'},
+              {text: '日期选择 DateSelect', link: '/组件/表单组件/日期选择.md'},
+              {text: '日历板 CalendarBoard', link: '/组件/表单组件/日历板.md'},
               {text: '开关 Switch', link: '/组件/表单组件/开关.md'},
               {text: '评分 Score', link: '/组件/表单组件/评分.md'},
               {text: '电子签名 Signature', link: '/组件/表单组件/电子签名.md'},
+              {text: '表单行 FormRow', link: '/组件/表单组件/表单行.md'},
             ]
           },
           {

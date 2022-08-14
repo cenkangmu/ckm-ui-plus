@@ -12,7 +12,7 @@
         {{ getValue }}
 
       </span>
-      <span class="no-text" v-else>请选择</span>
+      <span class="no-text" v-else>{{ placeholder }}</span>
       <span class="c-multiple-choice-count" v-if="modelValue.length">{{modelValue.length}}</span>
     </div>
     <div class="c-multiple-choice-icon">&#xe646;</div>
@@ -57,11 +57,11 @@ const props = defineProps({
   modelValue: Array,//选择结果
   labelKey: {default: 'label'},//显示key
   valueKey: {default: 'value'},//返回key
-  label: null,//输入框标签
+  label: null,//标签
   labelWidth: {type: String, default: '5em'},//标签宽度
   labelAlign: String,//标签对齐方式
-  inputAlign: {type: String, default: 'right'},//输入框内容对齐方式
-  placeholder: null,//输入框占位符
+  inputAlign: {type: String, default: 'right'},//内容对齐方式
+  placeholder: {default:'请选择'},//占位符
   disable: Boolean,//是否禁用
   change: Function,//当数据改变是调用的函数
   close: Function,//监听弹窗关闭

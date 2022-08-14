@@ -9,7 +9,7 @@
     <!--  选择结果  -->
     <div class="c-chain-text" :style="{textAlign:inputAlign }">
       <span v-if="modelValue.length">{{ getValue }}</span>
-      <span class="no-text" v-else>请选择</span>
+      <span class="no-text" v-else>{{ placeholder }}</span>
       <div class="c-input-clear"
            v-if="showClear && modelValue"
            @click.stop="emit('update:modelValue', '')">&#xe647;
@@ -54,11 +54,11 @@ const props = defineProps({
   labelKey: {default: 'label'},//显示key
   valueKey: {default: 'value'},//返回key
   childrenKey: {default: 'children'},//子集key
-  label: null,//输入框标签
+  label: null,//标签
   labelWidth: {type: String, default: '5em'},//标签宽度
   labelAlign: String,//标签对齐方式
-  inputAlign: {type: String, default: 'right'},//输入框内容对齐方式
-  placeholder: null,//输入框占位符
+  inputAlign: {type: String, default: 'right'},//内容对齐方式
+  placeholder: {default:'请选择'},//占位符
   separator:{type:String,default:'/'},//分隔符
   showLast:Boolean,//只显示最后一项
   disable: Boolean,//禁用

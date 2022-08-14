@@ -1,5 +1,5 @@
 import('@/assets/iconfont/iconfont.css')
-
+import utils from '../assets/utils'
 //获取components文件夹下所有vue文件
 const files = import.meta.globEager("/src/components/**/*.vue")
 let components = {}
